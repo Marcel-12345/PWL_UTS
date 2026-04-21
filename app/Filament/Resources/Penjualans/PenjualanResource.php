@@ -6,7 +6,7 @@ use App\Models\Penjualan;
 use Filament\Resources\Resource;
 
 use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
@@ -19,7 +19,7 @@ class PenjualanResource extends Resource
 {
     protected static ?string $model = Penjualan::class;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $form): Schema
     {
         return $form->schema([
             TextInput::make('pembeli')->required(),

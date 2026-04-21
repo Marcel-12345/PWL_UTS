@@ -6,7 +6,7 @@ use App\Models\Supplier;
 use Filament\Resources\Resource;
 
 use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Forms\Components\TextInput;
 
 use Filament\Tables;
@@ -17,7 +17,7 @@ class SupplierResource extends Resource
 {
     protected static ?string $model = Supplier::class;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $form): Schema
     {
         return $form->schema([
             TextInput::make('supplier_kode')->required(),

@@ -27,7 +27,7 @@ class PenjualanDetailResource extends Resource
 {
     protected static ?string $model = \App\Models\PenjualanDetail::class;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $form): Schema
     {
         return $form->schema([
             Select::make('penjualan_id')

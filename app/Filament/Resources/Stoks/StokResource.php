@@ -6,7 +6,7 @@ use App\Models\Stok;
 use Filament\Resources\Resource;
 
 use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DateTimePicker;
@@ -19,7 +19,7 @@ class StokResource extends Resource
 {
     protected static ?string $model = Stok::class;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $form): Schema
     {
         return $form->schema([
             Select::make('supplier_id')->relationship('supplier', 'supplier_nama'),
