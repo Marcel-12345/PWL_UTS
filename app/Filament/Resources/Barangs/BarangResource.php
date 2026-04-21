@@ -1,50 +1,37 @@
 <?php
 
-namespace App\Filament\Resources\Barangs;
+namespace App\Filament\Resources;
 
-use App\Filament\Resources\Barangs\Pages\CreateBarang;
-use App\Filament\Resources\Barangs\Pages\EditBarang;
-use App\Filament\Resources\Barangs\Pages\ListBarangs;
-use App\Filament\Resources\Barangs\Schemas\BarangForm;
-use App\Filament\Resources\Barangs\Tables\BarangsTable;
-use App\Models\Barang;
-use BackedEnum;
+use App\Models\Supplier;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
+
+use Filament\Forms;
+use Filament\Forms\Form;
+use Filament\Forms\Components\TextInput;
+
+use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Tables\Columns\TextColumn;
 
-class BarangResource extends Resource
+class SupplierResource extends Resource
 {
-    protected static ?string $model = Barang::class;
+    protected static ?string $model = Supplier::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
-
-    protected static ?string $recordTitleAttribute = 'name';
-
-    public static function form(Schema $schema): Schema
+    public static function form(Form $form): Form
     {
-        return BarangForm::configure($schema);
+        return $form->schema([
+            TextInput::make('supplier_kode')->required(),
+            TextInput::make('supplier_nama')->required(),
+            TextInput::make('supplier_alamat')->required(),
+        ]);
     }
 
     public static function table(Table $table): Table
     {
-        return BarangsTable::configure($table);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => ListBarangs::route('/'),
-            'create' => CreateBarang::route('/create'),
-            'edit' => EditBarang::route('/{record}/edit'),
-        ];
+        return $table->columns([
+            TextColumn::make('supplier_kode'),
+            TextColumn::make('supplier_nama'),
+            TextColumn::make('supplier_alamat'),
+        ]);
     }
 }
