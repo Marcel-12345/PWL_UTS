@@ -28,6 +28,16 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->resources([
+            \App\Filament\Resources\SupplierResource::class,
+            \App\Filament\Resources\UserResource::class,
+            \App\Filament\Resources\KategoriResource::class,
+            \App\Filament\Resources\LevelResource::class,
+            //\App\Filament\Resources\BarangResource::class,
+            \App\Filament\Resources\PenjualanResource::class,
+            //\App\Filament\Resources\PenjualanDetailResource::class,
+            \App\Filament\Resources\StokResource::class,
+            ])
             ->colors([
                 'primary' => Color::Amber,
             ])

@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Filament\Models\Contracts\HasName;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasName
 {
     protected $table = 'm_user';
     protected $primaryKey = 'user_id';
@@ -15,6 +16,7 @@ class User extends Authenticatable
         'username',
         'nama',
         'password',
+        'email',
     ];
 
     protected $hidden = [
@@ -34,5 +36,10 @@ class User extends Authenticatable
     public function stok()
     {
         return $this->hasMany(Stok::class, 'user_id');
+    }
+
+    public function getFilamentName(): string
+    {
+        return $this->nama;
     }
 }
