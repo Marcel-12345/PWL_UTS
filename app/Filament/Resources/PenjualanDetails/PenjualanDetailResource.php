@@ -12,20 +12,20 @@ use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
-
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\Select;
-
-use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
+use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+
 
 class PenjualanDetailResource extends Resource
 {
     protected static ?string $model = \App\Models\PenjualanDetail::class;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Schema $form): Schema
     {
@@ -49,4 +49,23 @@ class PenjualanDetailResource extends Resource
             TextColumn::make('jumlah'),
         ]);
     }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListPenjualanDetails::route('/'),
+            'create' => CreatePenjualanDetail::route('/create'),
+            'edit' => EditPenjualanDetail::route('/{record}/edit'),
+        ];
+    }
+
+    
 }
+

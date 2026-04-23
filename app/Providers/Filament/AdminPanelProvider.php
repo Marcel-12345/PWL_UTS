@@ -29,14 +29,14 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->resources([
-            \App\Filament\Resources\SupplierResource::class,
-            \App\Filament\Resources\UserResource::class,
-            \App\Filament\Resources\KategoriResource::class,
-            \App\Filament\Resources\LevelResource::class,
-            //\App\Filament\Resources\BarangResource::class,
-            \App\Filament\Resources\PenjualanResource::class,
-            //\App\Filament\Resources\PenjualanDetailResource::class,
-            \App\Filament\Resources\StokResource::class,
+            \App\Filament\Resources\Suppliers\SupplierResource::class,
+            \App\Filament\Resources\Users\UserResource::class,
+            \App\Filament\Resources\Kategoris\KategoriResource::class,
+            \App\Filament\Resources\Levels\LevelResource::class,
+            \App\Filament\Resources\Barangs\BarangResource::class,
+            \App\Filament\Resources\Penjualans\PenjualanResource::class,
+            \App\Filament\Resources\PenjualanDetails\PenjualanDetailResource::class,
+            \App\Filament\Resources\Stoks\StokResource::class,
             ])
             ->colors([
                 'primary' => Color::Amber,
